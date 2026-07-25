@@ -2,340 +2,381 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>일일 보고서 · 2026-07-23</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사마의 리포트 · 2026-07-26 · 게임제작</title>
 <style>
-  :root {
-    --bg: #0b0d10;
-    --panel: #12161b;
-    --panel-2: #171c22;
-    --border: #232a33;
-    --text: #d7dbe0;
-    --muted: #8b939c;
-    --accent: #d1a95c;
-    --accent-soft: #8c7541;
-    --alert-bg: #2a1a15;
-    --alert-border: #7a3a2a;
-    --warn-bg: #2a2515;
-    --warn-border: #6f5a2a;
-    --ok-bg: #162217;
-    --ok-border: #305a35;
-    --ok: #7ca86a;
-    --bad: #c86348;
-  }
-  * { box-sizing: border-box; }
-  html, body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: "SF Mono", "Menlo", "Consolas", "D2Coding", monospace;
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0b0d10;
+    color: #d0d4d8;
+    font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
     font-size: 14px;
     line-height: 1.65;
-    margin: 0;
-    padding: 0;
+    padding: 40px 24px 80px;
   }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 32px 24px 96px; }
-  header.top { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 24px; }
-  header.top h1 { color: var(--accent); font-size: 20px; margin: 0 0 6px; letter-spacing: 0.5px; }
-  header.top .meta { color: var(--muted); font-size: 12px; }
-  .alert-box, .ok-box {
-    padding: 14px 18px;
-    margin-bottom: 18px;
-    border-radius: 4px;
+  .container { max-width: 960px; margin: 0 auto; }
+  header {
+    border-bottom: 1px solid #22262c;
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+  header h1 {
+    font-size: 22px;
+    color: #f0f4f8;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  header .meta {
+    color: #6a7078;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  .box {
+    border: 1px solid #22262c;
+    background: #12151a;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    border-radius: 3px;
   }
   .alert-box {
-    background: var(--alert-bg);
-    border: 1px solid var(--alert-border);
-    border-left: 4px solid var(--bad);
+    border-left: 3px solid #c95050;
+    background: #1c1315;
+    color: #f0c8c8;
   }
   .ok-box {
-    background: var(--ok-bg);
-    border: 1px solid var(--ok-border);
-    border-left: 4px solid var(--ok);
+    border-left: 3px solid #5a9a5a;
+    background: #131c15;
+    color: #c8e8c8;
   }
-  .alert-box h3 { color: #eabbaa; margin: 0 0 8px; font-size: 13px; letter-spacing: 0.5px; }
-  .ok-box h3 { color: #b5d3aa; margin: 0 0 8px; font-size: 13px; letter-spacing: 0.5px; }
-  .alert-box ol, .ok-box ul { margin: 4px 0 0; padding-left: 20px; }
-  .alert-box li, .ok-box li { margin-bottom: 6px; }
-  .alert-box li strong { color: #f0d6c8; }
-  .warn-box {
-    background: var(--warn-bg);
-    border: 1px solid var(--warn-border);
-    border-left: 4px solid var(--accent);
-    padding: 12px 16px;
-    margin-bottom: 24px;
-    border-radius: 4px;
-    font-size: 13px;
-    color: #d9c896;
-  }
-  section { margin-bottom: 40px; }
-  section h2 {
-    color: var(--accent);
-    font-size: 16px;
-    letter-spacing: 0.5px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 8px;
-    margin: 0 0 18px;
-  }
-  section h3 {
-    color: #cfd6de;
-    font-size: 14px;
-    margin: 18px 0 8px;
-    letter-spacing: 0.3px;
-  }
-  section h3 .badge {
-    display: inline-block;
+  .box-title {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     font-size: 11px;
+    color: #8a9098;
+    margin-bottom: 8px;
+  }
+  .alert-box .box-title { color: #e08080; }
+  .ok-box .box-title { color: #90c090; }
+  section {
+    margin-bottom: 44px;
+  }
+  section h2 {
+    color: #f0f4f8;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 12px 16px;
+    background: #171a20;
+    border-left: 3px solid #4a8ac8;
+    margin-bottom: 20px;
+  }
+  section h2 .tag {
+    display: inline-block;
+    background: #4a8ac8;
+    color: #0b0d10;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-right: 10px;
+    vertical-align: middle;
+    letter-spacing: 1px;
+  }
+  h3 {
+    color: #d8dce4;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed #22262c;
+  }
+  h3 .axis {
+    display: inline-block;
+    font-size: 10px;
+    color: #4a8ac8;
+    background: #142030;
     padding: 2px 6px;
     margin-left: 8px;
-    background: #262d36;
-    color: var(--muted);
-    border-radius: 3px;
-    letter-spacing: 0.3px;
+    border-radius: 2px;
+    vertical-align: middle;
+    letter-spacing: 1px;
+    font-weight: normal;
   }
-  section h3 .badge.ok { background: #1e2f20; color: #b5d3aa; }
-  section h3 .badge.warn { background: #33291a; color: #e0c895; }
-  .panel {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    padding: 16px 20px;
-    margin-bottom: 14px;
-    border-radius: 4px;
-  }
-  .panel-sub {
-    background: var(--panel-2);
-    border: 1px solid var(--border);
-    padding: 12px 16px;
-    margin-top: 10px;
-    border-radius: 3px;
+  h4 {
+    color: #b0b8c0;
     font-size: 13px;
-    color: var(--muted);
+    font-weight: 600;
+    margin-top: 14px;
+    margin-bottom: 6px;
   }
-  .kv { display: grid; grid-template-columns: 90px 1fr; gap: 6px 14px; margin-bottom: 4px; }
-  .kv .k { color: var(--accent-soft); }
-  table { width: 100%; border-collapse: collapse; margin: 8px 0 12px; font-size: 13px; }
-  th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
-  th { background: #1a1f26; color: var(--accent); font-weight: normal; }
-  ul { padding-left: 20px; margin: 6px 0 8px; }
-  ul li { margin-bottom: 4px; }
+  p { margin-bottom: 8px; color: #a8b0b8; }
+  ul {
+    padding-left: 22px;
+    margin-bottom: 12px;
+  }
+  li { color: #a8b0b8; margin-bottom: 4px; }
   code {
-    background: #1c2229;
-    padding: 1px 6px;
-    border-radius: 3px;
-    color: #cfe1ff;
-    font-size: 12.5px;
+    background: #1a1e24;
+    color: #b8d8f8;
+    padding: 1px 5px;
+    border-radius: 2px;
+    font-size: 12px;
   }
-  .pick { color: var(--ok); }
-  .drop { color: #b06868; }
-  footer { border-top: 1px solid var(--border); padding-top: 16px; margin-top: 40px; color: var(--muted); font-size: 12px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 18px;
+    font-size: 13px;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid #22262c;
+  }
+  th {
+    color: #8a9098;
+    font-weight: 600;
+    background: #14181d;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td { color: #b0b8c0; }
+  .pass { color: #90c090; font-weight: 600; }
+  .warn { color: #d8b060; font-weight: 600; }
+  .fail { color: #e08080; font-weight: 600; }
+  .subtle { color: #6a7078; font-size: 12px; }
+  .kv { display: flex; gap: 12px; margin-bottom: 4px; }
+  .kv .k { color: #6a7078; min-width: 100px; font-size: 12px; }
+  .kv .v { color: #b0b8c0; flex: 1; font-size: 13px; }
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #22262c;
+    color: #6a7078;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.8;
+  }
+  .footer-hl { color: #a8b0b8; }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="container">
 
-<header class="top">
-  <h1>일일 보고서 · 2026-07-23 (목)</h1>
-  <div class="meta">기획전략실 · 팀장 사마의 종합 · 파이프라인 7번째 사이클(사마의 5 → 마이클 3 픽·발전 → 클레버 검수 통과 → 피카소 mockup + 달리 Canva → 사마의 종합)</div>
+<header>
+  <h1>사마의 리포트 · 2026-07-26 (일)</h1>
+  <div class="meta">
+    첫 새 파이프라인 사이클 · 감각·행동 6축 프레임 첫 실행 · 주 3일 화·목·일 · 대표 방향 준수(언어 최소)
+  </div>
 </header>
 
-<div class="ok-box">
-  <h3>[사이클 상태 · 안정화 신호]</h3>
+<!-- 대표 결재 요망 -->
+<div class="box alert-box">
+  <div class="box-title">▲ 대표 확인 대기 · 사이클 무관 이월 (긴급 아님)</div>
+  <p>· 개발팀 공동 세션 규격 미이행 — 마이클 발화 부재로 클레버 단독 진행. 5일 절차 위반 이슈 뿌리. 세션 트리거 인프라 조정 결재 대기 중.</p>
+  <p>· 디자인팀 공동 세션 프로세스 붕괴 — 팀장 다빈치 지시 마커 미발화 + 피카소·달리 scope 침범. 다음 사이클 3항 규율 적용 자체 조치 완료.</p>
+  <p>· <code>정정 큐</code> 목적지 미정의 — game3 <code>celebrateTimer</code> 근사값 이슈처럼 하루 안 완결 후 남는 부분 산출물을 어디에 남길지 규정 필요. 방향 확인 대기.</p>
+</div>
+
+<!-- 안정화 신호 -->
+<div class="box ok-box">
+  <div class="box-title">● 안정화 신호</div>
+  <p>· 첫 새 파이프라인 사이클 프로세스 정상 개시 — 폴더 자동 생성 · 세션 4개 중 3개 완료(00:02·01:00·03:00) · 리포트 세션 진행 중.</p>
+  <p>· 감각·행동 6축 프레임 A·B·C·D 4갈래 다 커버 · 게임 내 언어 노출 3개 다 <span class="pass">0자</span> · 대표 방향(2026-07-23 언어 최소) 완전 준수.</p>
+  <p>· 개발팀 3개 <code>node --check</code> 통과 · 디자인 mockup 3개 + 이미지 프롬프트 15개 완성 · 첫 사이클 산출물 규격대로 하나의 날짜 폴더에 모임.</p>
+</div>
+
+<!-- SECTION A: 사마의 아이디어 -->
+<section>
+  <h2><span class="tag">A</span>사마의 발굴 · 아이디어 5개</h2>
+  <p class="subtle">감각·행동 6축 프레임 첫 발굴 · A·B·C·D 4갈래 다 커버 · 언어 노출 5개 다 20자 이내 · 재고 6개와 코어 루프 미겹침 확인.</p>
+
+  <h3>1. 광원 사냥꾼 (Torch Hunter) <span class="axis">A / 눈</span></h3>
+  <div class="kv"><span class="k">목적</span><span class="v">어두운 방 안에서 시야 자체가 자원이 되는 코어. Alien Isolation 공포를 순수 관조로 재해석.</span></div>
+  <div class="kv"><span class="k">원리</span><span class="v">검은 화면 위 커서 = 손전등 원. 원 안에 순간 잡히는 그림자·움직임·형태로 상황을 재구성. 원 밖은 항상 어둠.</span></div>
+  <div class="kv"><span class="k">재미</span><span class="v">어두움을 훑는 원의 감각적 몰입 · 순간 각인의 관조 · 원 밖의 상상 · 놓친 순간의 아쉬움.</span></div>
+  <div class="kv"><span class="k">언어 노출</span><span class="v"><span class="pass">0~5자</span> · LLM 백엔드 판정 여지 있음</span></div>
+
+  <h3>2. 모래시계 뒤집기 (Hourglass Turn) <span class="axis">B / 손</span></h3>
+  <div class="kv"><span class="k">목적</span><span class="v">중력·모래 흐름이 코어. Powder Toy 자매지만 "뒤집기 타이밍이 곧 결과" 코어는 부재.</span></div>
+  <div class="kv"><span class="k">원리</span><span class="v">유리 모래시계 · 모래 흐름 · 화면 회전으로 중력 방향 전환 · 여러 번 뒤집기로 층층이 쌓임 · 완성 형태에 맞춤.</span></div>
+  <div class="kv"><span class="k">재미</span><span class="v">중력 전환의 손맛 · 알갱이 쌓임의 시각 만족 · 즉시성 · 정지 순간의 미학.</span></div>
+  <div class="kv"><span class="k">언어 노출</span><span class="v"><span class="pass">0~3자</span> · LLM X</span></div>
+
+  <h3>3. 눈으로 듣기 (Visual Rhythm) <span class="axis">A/C / 귀</span></h3>
+  <div class="kv"><span class="k">목적</span><span class="v">청각 자산 없이 시각 파형·색·펄스만으로 리듬 게임 성립하는지 실험. Tetris Effect의 완전 무음 버전 · 시장 완전 부재.</span></div>
+  <div class="kv"><span class="k">원리</span><span class="v">화면 전체 색·펄스·파형 흐름 · 소리 전혀 없음 · 시각 리듬 패턴을 눈으로 읽어 정박에 커서를 두드림.</span></div>
+  <div class="kv"><span class="k">재미</span><span class="v">소리 없이 시각으로 리듬을 느끼는 새 감각 · 화면 펄스가 자기 심박처럼 · 완전 침묵 속 몰입.</span></div>
+  <div class="kv"><span class="k">언어 노출</span><span class="v"><span class="pass">0자</span> · LLM X</span></div>
+
+  <h3>4. 도미노 (Domino Chain) <span class="axis">C / 결</span></h3>
+  <div class="kv"><span class="k">목적</span><span class="v">연쇄 반응 시각화가 코어. Rube Goldberg 계보 미니멀 재해석 · 순수 시각 연쇄 완결.</span></div>
+  <div class="kv"><span class="k">원리</span><span class="v">캔버스 위 물리 오브젝트 배치 · 첫 조각 클릭 → 연쇄 발동 → 목표 지점 도달 → 성공 · 실패는 시각적으로 그대로 보임.</span></div>
+  <div class="kv"><span class="k">재미</span><span class="v">연쇄가 흐르는 관조 · 어긋남의 시각적 유쾌함 · 폭포 같은 연쇄 카타르시스 · 세팅 변주의 반복 만족.</span></div>
+  <div class="kv"><span class="k">언어 노출</span><span class="v"><span class="pass">0~5자</span> · LLM 백엔드 판정 여지 있음</span></div>
+
+  <h3>5. 한 획 (One Stroke) <span class="axis">D / 결단</span></h3>
+  <div class="kv"><span class="k">목적</span><span class="v">짧은 판단 → 즉시 시각 결과. 한붓그리기(오일러 정리) 원리 인디 재해석 · Line Rider 궤적 계보와 코어 다름.</span></div>
+  <div class="kv"><span class="k">원리</span><span class="v">화면 위 흩어진 점 · 마우스 눌러 한 획으로 모든 점 잇기 · 펜 떼면 판정 종료 · 점 배치가 매판 달라 매번 새 궤적.</span></div>
+  <div class="kv"><span class="k">재미</span><span class="v">펜 떼지 못하는 손 긴장 · 자동으로 남는 궤적 · 순간 판단 · 완성 시 궤적이 하나의 형태되는 발견의 쾌감.</span></div>
+  <div class="kv"><span class="k">언어 노출</span><span class="v"><span class="pass">0~3자</span> · LLM X</span></div>
+</section>
+
+<!-- SECTION B: 개발팀 픽 근거 -->
+<section>
+  <h2><span class="tag">B</span>개발팀 선정 · 5개 → 3개 · 마이클+클레버</h2>
+  <p class="subtle">01:00~03:00 공동 세션 · 축 커버(A·A/C·D · B 미포함) · 구현 품질 우선 합의.</p>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>제목</th><th>축</th><th>픽</th><th>이유</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td><td>광원 사냥꾼</td><td>A (눈)</td><td class="pass">✓</td>
+        <td>커서 = 유일한 시야. 능동 관찰 감각이 질적으로 다름. Canvas 즉시 구현.</td>
+      </tr>
+      <tr>
+        <td>2</td><td>모래시계 뒤집기</td><td>B (손)</td><td class="fail">✗</td>
+        <td>파티클 물리 엔진 없이는 코어 감각 절반 · 한 세션에 부담.</td>
+      </tr>
+      <tr>
+        <td>3</td><td>눈으로 듣기</td><td>A/C (귀)</td><td class="pass">✓</td>
+        <td>완전 0자 · 무음 리듬 성립 여부 실험 가치 있음.</td>
+      </tr>
+      <tr>
+        <td>4</td><td>도미노</td><td>C (결)</td><td class="fail">✗</td>
+        <td>배치 UX + 연쇄 물리 한 세션 부담 · 다음 사이클 이월 가능.</td>
+      </tr>
+      <tr>
+        <td>5</td><td>한 획</td><td>D (결단)</td><td class="pass">✓</td>
+        <td>드로잉 행동 자체가 코어 · 즉각 반응 · 가장 밀도.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>필터 통과 근거</h4>
   <ul>
-    <li><strong>클레버 검수 3개 전부 통과</strong> — 어제(치명 1·실버그 1) 대비 산출물 품질 개선. 논리 이슈 1건·매직 넘버 스멜 1건만 남음(아래 결재 요망 1·2).</li>
-    <li><strong>Canva 포스터 3종 전부 완료</strong> — 어제는 game3만 코드 버그로 보류였는데 오늘은 3/3 완료. game1(DAHQI-4jHxQ)·game2(DAHQI97Amq8)·game3(DAHQIxZqdgY).</li>
-    <li><strong>피카소 선기록 문제 재발 없음 2일차</strong> — 다빈치 어제 에스컬레이션 결정 후 정상 유지.</li>
-    <li><strong>이미지 sandbox 이슈 자연 해소 지속</strong> — 오늘도 커버 이미지 없음(HTML mockup 전환).</li>
+    <li>3개 다 <span class="pass">언어 노출 0자</span> — 튜토리얼·UI 텍스트 전무. 대표 방향(20자 이내) 초과 준수.</li>
+    <li>3개 다 Canvas·JS 순수 프론트엔드 · 한 세션 안 프로토타입 완성 가능한 밀도.</li>
+    <li>축 균형: A · A/C · D 커버. B(손)는 물리 엔진 부담으로 제외 합의 — 다음 사이클 시 개발 여력 재점검.</li>
   </ul>
-</div>
-
-<div class="alert-box">
-  <h3>[대표 결재 요망 · 오늘 3건]</h3>
-  <ol>
-    <li><strong>[신규 · 논리 이슈] game2 손자 특별 대사 조건 무조건 참</strong> — line 205 <code>v.isLast && shadowList.length &gt;= 3</code> 조건이나 앞 방문객 4명 각 미채택 1개씩 push → 손자 도착 시 shadowList 항상 4 → 조건 무조건 참. (a) 확장의 조건성이 관찰 불가. 임계값을 미채택 <em>비율</em> 또는 감정 태그 기반으로 재설계 필요. line 277 관련 데드 브랜치 동반.</li>
-    <li><strong>[스멜] game3 매직 넘버</strong> — <code>n.day === 3</code>이 NIGHTS 재정렬 시 취약. (a) msgOverride가 3일차 정답(triple)에만 적용·오답엔 미반영은 설계 결정으로 유지.</li>
-    <li><strong>[격상 · 5일 재범] 클레버 세션 자율업무 트리거 부재</strong> — 오늘 산출물 품질은 개선됐으나 마커 규약 자체는 5일 연속 부재. 학습이 아닌 인프라 공백. 조정 우선순위 유지 요청.</li>
-  </ol>
-  <div class="panel-sub" style="margin-top: 10px;">
-    <strong>이월 결재 (변동 없음):</strong> 지시서 c항 개정(c-1 vs c-2 권고). 다빈치 제출 2일차.<br>
-    <strong>이월 종결:</strong> 07-22 game3 관측자의 방 치명 버그·game2 꽃말배달부 실버그 — 오늘 파일은 별개 게임, 해당 없음. 20260722 폴더 사이클 종료로 종결.
-  </div>
-</div>
-
-<!-- ================= 섹션 A ================= -->
-<section>
-  <h2>A. 사마의 아이디어 5개 (2026-07-22 23:00 발굴 · 6일째 라운드)</h2>
-
-  <div class="panel">
-    <h3>1. 모래 만다라 (Sand Mandala) <span class="badge">축3 / LLM X / 무거운 관조</span></h3>
-    <div class="kv"><div class="k">목적</div><div>축3 후회의 비대칭 새 각도(한사람의5분=선택 후회, 묘비=관찰자 요약, 잊혀진이름=회수, 이름상인=상거래 · 이건 <em>완성 후 스스로 지우는 무상</em>). 티베트 모래 만다라 전통 게임화 인디 부재.</div></div>
-    <div class="kv"><div class="k">원리</div><div>매일 색모래 5~7색으로 하루치 만다라 조각을 1/12씩 채워감(12일 완성) · 완성 순간 축하 애니 후 승려(플레이어)가 만다라를 손으로 흩어 강물에 흘려보냄 · 흘려보낸 조각의 색·문양이 다음 만다라 씨앗에 반영 · 지운 만다라는 게임 안에선 다시 볼 수 없음.</div></div>
-    <div class="kv"><div class="k">재미</div><div>12일간 쌓은 완성물을 자기 손으로 지우는 무상의 무게(축3 정면) · 지운 만다라가 다음 씨앗에 미묘하게 남는 연쇄 · "이번엔 지우지 말까" 유혹과 안 지우면 다음을 못 시작하는 규칙의 긴장.</div></div>
-    <div class="kv"><div class="k">출처</div><div>티베트 겔룩파 모래 만다라(Dul-tson-kyil-khor), 나가르주나 <중론> 공(空), Journey(2012 무상 원형), Passage(2007).</div></div>
-  </div>
-
-  <div class="panel">
-    <h3>2. 밤 종지기 (Night Ringer) <span class="badge">축2·6 / LLM X / Trickster+Cozy</span></h3>
-    <div class="kv"><div class="k">목적</div><div>축2 관찰자 자의식·축6 Trickster 결합의 새 매체(종탑·소리 신호). 소리 자산 없이 시각 파형·마을 반응으로 표현 가능(소리그림자와 달리 청각 자산 불필요). 능동 종신호 인디 부재.</div></div>
-    <div class="kv"><div class="k">원리</div><div>중세 마을 종탑지기 · 매일 밤 종 4가지 패턴 중 하나 선택 타종(단타=평화·2연타=경계·3연타=화재·긴 울림=출생/죽음) · 종 파형이 지도 위 마을 집들에 물결로 퍼지며 각 집 반응(잠·기상·문 열림·촛불) 변화 · 잘못된 타종은 마을 소요.</div></div>
-    <div class="kv"><div class="k">재미</div><div>짧은 관찰과 타종 결정의 리듬 몰입 · 파형이 마을에 퍼지며 자기 결정이 시각화되는 만족 · 오타종의 유쾌한 실패(Trickster) · 며칠 후 진짜 화재가 나면 앞선 오경계의 여파로 늦게 반응하는 서사 연쇄.</div></div>
-    <div class="kv"><div class="k">출처</div><div>중세 유럽 curfew bell·화재종, John Donne <누구를 위해 종은 울리나>, 헤밍웨이 동명작, 조선 통금·인정 종.</div></div>
-  </div>
-
-  <div class="panel">
-    <h3>3. 환자의 방 (The Sickroom) <span class="badge">축4 / LLM O / 무거운 관조</span></h3>
-    <div class="kv"><div class="k">목적</div><div>축4 모순의 공존 세 번째 각도(꿈일기=부조리 조각, 라쇼몽=두 시점 진실, 이건 <em>사랑과 미움 병존</em>). 병문안 짧은 무대에 이 축을 앉힌 인디 부재.</div></div>
-    <div class="kv"><div class="k">원리</div><div>시골 병실 하나 · 매일 다른 병문안객(가족·옛 애인·오랜 원수·목사·아이) 3~5명 순서대로 · 방문객이 남길 말을 두 문장 중 선택(사랑 vs 미움) · 안 고른 쪽이 반투명 흐리게 방 구석에 남아 다음 방문객 대사에 영향 · 며칠 후 환자 사망·회복 갈림길.</div></div>
-    <div class="kv"><div class="k">재미</div><div>한 인물에 대한 사랑과 미움이 동시에 진심인 감각의 무게(축4 정면) · 안 고른 말이 방에 흐릿하게 쌓이며 병실 공기 자체가 바뀌는 시각화 · 사후 그 말들이 유족 기억으로 굳는 도덕적 무게.</div></div>
-    <div class="kv"><div class="k">출처</div><div>톨스토이 <이반 일리치의 죽음>(1886), Spiritfarer(2020 이별 원형만), 미야모토 테루 <환상의 빛>.</div></div>
-  </div>
-
-  <div class="panel">
-    <h3>4. 미술관 큐레이터 (The Curator) <span class="badge">축5 / LLM O / Cozy</span></h3>
-    <div class="kv"><div class="k">목적</div><div>축5 의미부여 새 매체(그림 배치가 관람객 서사를 만드는 원리). 미술관 큐레이션 게임화 인디 부재.</div></div>
-    <div class="kv"><div class="k">원리</div><div>마을 작은 미술관 · 매주 그림 8~12점 배당(풍경·초상·정물·추상 태그) · 3개 방에 순서·조합으로 배치 · 관람객(다양한 직업·성격)이 방을 돌며 자기 순서로 봄 · 조합에 따라 각자 다른 이야기를 방명록에 남김 · LLM 방명록이 다음 주 배당 그림 성향에 반영.</div></div>
-    <div class="kv"><div class="k">재미</div><div>그림 두 장 나란히 걸었을 때 새 이야기가 생기는 병치 쾌감(몽타주 원리) · 같은 그림도 관람객마다 다르게 읽는 서프라이즈 · 방명록이 쌓이며 미술관 전체가 하나의 큰 서사가 되는 연쇄.</div></div>
-    <div class="kv"><div class="k">출처</div><div>Kuleshov 효과(1918 몽타주), John Berger <다른 방식으로 보기>, 미술관 큐레이션 이론(H. Obrist).</div></div>
-  </div>
-
-  <div class="panel">
-    <h3>5. 암호 편지 (The Cipher) <span class="badge">축5 / LLM O / 하이브리드</span></h3>
-    <div class="kv"><div class="k">목적</div><div>축5 의미부여 해독 매체 재해석 · Chants of Sennaar(언어 해독)·필사가(자의 개입)와 결이 다름(이건 <em>정확한 해독 vs 의도적 오독</em>의 딜레마).</div></div>
-    <div class="kv"><div class="k">원리</div><div>전시 중 마을에 도착하는 암호 편지 매일 1~2통(시저 이동·단어 대체·모스·픽토그램) · 플레이어가 해독표 조합해 원문 추정 · 해독 내용을 그대로 전할지 살짝 바꿔 전할지 선택 · 오독·의도 각색이 마을 사건에 반영 · LLM 발신자가 몇 통 후 답을 보낼 때 앞선 각색을 알게 되면 어조가 바뀜.</div></div>
-    <div class="kv"><div class="k">재미</div><div>규칙 하나 찾는 순간의 아하 쾌감 · 정확한 해독 vs 다정한 오독의 도덕 딜레마 · LLM 발신자가 몇 통 후 눈치채는 조마조마함 · 해독표가 쌓이며 마을 전체가 자기 언어로 짜이는 감각.</div></div>
-    <div class="kv"><div class="k">출처</div><div>시저·비제네르, Alan Turing·블레츨리 파크, Chants of Sennaar(2023 자매만·매체 교체), Robert Harris <에니그마>.</div></div>
-  </div>
 </section>
 
-<!-- ================= 섹션 B ================= -->
+<!-- SECTION C: 개발팀 구현 현황 -->
 <section>
-  <h2>B. 개발팀 3개 선정 이유 (2026-07-23 00:30 · 마이클)</h2>
+  <h2><span class="tag">C</span>개발팀 구현 현황 · 3개 게임</h2>
 
-  <div class="panel">
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>게임</th>
-          <th>판정</th>
-          <th>필터 통과 근거</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>모래 만다라</td>
-          <td class="pick">픽 (game1)</td>
-          <td>Canvas + 파티클 물리 + localStorage로 순수 완결 · 무상 코어(완성→흩기)가 단일 버튼 하나로 검증 가능 · 씨앗 색 연쇄가 non-LLM으로 감각 시연 가능</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>밤 종지기</td>
-          <td class="pick">픽 (game3)</td>
-          <td>CSS 동심원 ripple + 7채 집 amber glow · 소리 없이 시각 파형·집 반응만으로 코어 검증 가능 · 5일 밤 시퀀스로 프로토타입 완결</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>환자의 방</td>
-          <td class="pick">픽 (game2)</td>
-          <td>방문객 5명 preset 대사 2택으로 축4 병존 감각 검증 가능 · 안 고른 말 누적 시각화 = "방 공기" 패널이 코어 인상 · LLM 대사는 다음 사이클</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>미술관 큐레이터</td>
-          <td class="drop">제외</td>
-          <td>그림 배치 UI가 드래그·정렬·시각화 복잡 · LLM 관람객 방명록 없이는 코어 재미(병치→서사)가 preset 몇 개로 축소됨. LLM 통합 사이클과 묶어 재검토</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>암호 편지</td>
-          <td class="drop">제외</td>
-          <td>해독 규칙 4종(시저·대체·모스·픽토그램)마다 UI·판정 로직이 독립적이라 프로토타입 스코프 큼 · LLM 발신자 어조 변화 없이는 각색 딜레마 감각 약함</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="panel-sub">
-      <strong>제외 원칙 오늘 사이클 (LLM 자산 축):</strong> "코어 재미가 LLM 반응에 100% 의존" 조건은 예산 상한과 LLM 통합 사이클 결정 대기 중이라 이월 처리. 오늘 픽 3개는 <em>0 LLM 호출로도 코어 감각 검증</em>이 가능한 것들로 통일.
-    </div>
-  </div>
+  <h3>game1 · 광원 사냥꾼 <span class="axis">A / 눈</span></h3>
+  <div class="kv"><span class="k">경로</span><span class="v"><code>20260726/game1/index.html</code></span></div>
+  <div class="kv"><span class="k">텍스트</span><span class="v"><span class="pass">0자</span></span></div>
+  <h4>코어 루프</h4>
+  <p>어두운 방에서 마우스 커서를 따라다니는 손전등 원만이 세계를 밝힘. 커서를 움직여 방 안의 오브젝트들을 순간순간 포착.</p>
+  <h4>구현 상태</h4>
+  <ul>
+    <li>Canvas 풀스크린 · 어둠 오버레이: radial gradient (투명 → 0.04 → 0.78 → 0.97 · 4-stop)</li>
+    <li>씬 오브젝트: 넘어진 의자 · 흩어진 종이 3장 · 창문(달빛) · 쓰러진 스탠드 · 발자국 5개 · 엎어진 컵</li>
+    <li><b>(a) 이동 실루엣:</b> 사람 실루엣 18초 주기로 방 가로지름 — 손전등 지나쳐야 포착 가능</li>
+    <li><b>(c) UX:</b> 에지 소프트 그라데이션 · mousedown/touchstart 시 lightR 145로 확장 (lerp 0.1) · touch 지원</li>
+  </ul>
+  <h4>다음 스텝</h4>
+  <ul>
+    <li>씬 오브젝트 인터랙션 추가 (클릭 시 물건 뒤집기 등)</li>
+    <li>여러 씬(부엌·복도·다락) 순서 진행</li>
+    <li>실루엣 수·속도 게임 진행에 따라 가변</li>
+  </ul>
+
+  <h3>game2 · 눈으로 듣기 <span class="axis">A/C / 귀</span></h3>
+  <div class="kv"><span class="k">경로</span><span class="v"><code>20260726/game2/index.html</code></span></div>
+  <div class="kv"><span class="k">텍스트</span><span class="v"><span class="pass">0자</span></span></div>
+  <h4>코어 루프</h4>
+  <p>완전 무음 상태에서 중심에서 퍼져나오는 시각 펄스 링을 눈으로 읽어 타겟 존 통과 순간에 클릭/탭.</p>
+  <h4>구현 상태</h4>
+  <ul>
+    <li>펄스 emission: 1200ms 간격 · 링이 TARGET_R × 1.75까지 900ms 팽창</li>
+    <li>타겟 존: 점선 원 (TARGET_R = screenMin × 0.28) · 히트 허용치 ±13%</li>
+    <li><b>(a) 2단계 진행:</b> 10연속 히트 후 phase 2 전환 → 2중 박자(600ms 간격 2링/주기)</li>
+    <li><b>(c) UX:</b> 퍼펙트 → bgHue 이동 + 파티클 14개 폭발 · 미스 → ripple 왜곡 · 스트릭 시각화 최대 10개 · phase 2 표시 twin dot</li>
+    <li>phase 2 전환 중복 방지 확인 (streak &gt;= 10 &amp;&amp; phase === 1)</li>
+  </ul>
+  <h4>다음 스텝</h4>
+  <ul>
+    <li>phase 3: 불규칙 리듬 패턴 (홀수 분할·폴리리듬)</li>
+    <li>히트 정확도에 따른 파티클 색·크기 분화 (퍼펙트/굿/OK)</li>
+    <li>배경 hue가 연속 히트에 따라 스펙트럼 한 바퀴 도는 시각 여정</li>
+  </ul>
+
+  <h3>game3 · 한 획 <span class="axis">D / 결단</span></h3>
+  <div class="kv"><span class="k">경로</span><span class="v"><code>20260726/game3/index.html</code></span></div>
+  <div class="kv"><span class="k">텍스트</span><span class="v"><span class="pass">0자</span></span></div>
+  <h4>코어 루프</h4>
+  <p>화면 위 흩어진 점들을 펜을 떼지 않고 한 획으로 모두 지나침. 실패하면 잔상이 남아 다음 시도의 배경.</p>
+  <h4>구현 상태</h4>
+  <ul>
+    <li>레벨 3개: 6점(다이아몬드) · 8점(와이드 스타) · 10점(원형) · 완성 후 순환</li>
+    <li>드로잉: mousedown/move/up + touch 지원 · 점 히트 판정 <code>dist &lt; DOT_R * 1.5</code></li>
+    <li><b>(a) 잔상:</b> 실패 경로 최대 5개 보존 · opacity 0.14</li>
+    <li><b>(c) UX:</b> 현재 획 glow stroke (shadowBlur 14) · 점 breathing 애니메이션 · 완성 시 각 점 파티클 10개 폭발 · 2초 셀레브레이션</li>
+  </ul>
+  <h4>검수 이슈</h4>
+  <p><span class="warn">△ celebrateTimer 근사값</span> — <code>-= 16</code> 하드코딩. 가변 프레임 정밀도 낮음. 기능 무관하지만 <b>다음 사이클 정정 큐</b> 이관 대상. 큐 저장 위치 대표 방향 대기.</p>
+  <h4>다음 스텝</h4>
+  <ul>
+    <li>레벨 10개 이상 추가 (점 배치 최적화)</li>
+    <li>완성 획이 형성하는 형태 힌트 (하트·별·나비 등)</li>
+    <li>시간 제한 레이어 추가 (breathing 점이 사라지기 전에 잇기)</li>
+  </ul>
+
+  <h4 style="margin-top:20px;">클레버 검수 종합</h4>
+  <table>
+    <thead>
+      <tr><th>게임</th><th>판정</th><th>이슈</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>game1</td><td class="pass">통과</td><td>없음</td></tr>
+      <tr><td>game2</td><td class="pass">통과</td><td>없음 (phase 중복 방지 확인)</td></tr>
+      <tr><td>game3</td><td class="pass">통과</td><td>celebrateTimer 근사값 · 기능 무관 · 정정 큐 이관</td></tr>
+    </tbody>
+  </table>
+  <p class="subtle">JS 3개 <code>node --check</code> 통과 · 텍스트 노출 3개 전부 0자 · 대표 방향 준수.</p>
 </section>
 
-<!-- ================= 섹션 C ================= -->
+<!-- SECTION D: 디자인팀 작업 -->
 <section>
-  <h2>C. 개발팀 구현 현황 (2026-07-23 00:30 · 마이클 · 클레버 검수 3/3 통과)</h2>
+  <h2><span class="tag">D</span>디자인팀 · mockup + 이미지 프롬프트</h2>
+  <p class="subtle">03:00~04:00 공동 세션 · 다빈치 · 피카소 · 달리 · 게임별 mockup HTML + image_prompt.md (5 프롬프트씩) · <b>이미지 생성은 하지 않음</b> (대표가 필요 시 프롬프트 직접 사용).</p>
 
-  <div class="panel">
-    <h3>game1 · 모래 만다라 <span class="badge ok">클린 통과</span></h3>
-    <div class="kv"><div class="k">경로</div><div><code>dev/daily/20260723/game1/index.html</code></div></div>
-    <div class="kv"><div class="k">코어 루프</div><div>12단계로 색모래 채우기 → 완성 순간 버튼 하나로 파티클 산란 애니와 함께 모두 지움</div></div>
-    <div class="kv"><div class="k">기초 구현</div><div>Canvas 280×280 · 12섹터×4링 구조 · 7색 팔레트 · "이 조각 채우기" 버튼 · 링별 명도 그라데이션 · 12단계 progress dot</div></div>
-    <div class="kv"><div class="k">(a) 발전</div><div><strong>씨앗 색 연쇄:</strong> 흩어버린 만다라 지배색을 localStorage 저장 → 다음 만다라 시작 시 첫 색 자동 제안 + "지난 만다라의 기억이 스며있다" 메시지</div></div>
-    <div class="kv"><div class="k">(c) 발전</div><div>색 선택 직후 다음 조각 하이라이트 미리보기 · 흩어버리면 파티클 물리(중력+감쇠) 애니 후 "지워진 것은 다시 볼 수 없습니다"</div></div>
-    <div class="kv"><div class="k">다음 스텝</div><div>Canvas → PNG blob 저장으로 "지워진 만다라 갤러리" 별도 노출(서사 유지) · 씨앗 색 3개+ 누적 시 "흔적 레이어" 가시화 · localStorage 12일 주기 강제</div></div>
-    <div class="kv"><div class="k">클레버 코멘트</div><div>파티클 물리·씨앗 색 왕복·XSS 정상. 정정 없음.</div></div>
-  </div>
+  <h3>game1 · 광원 사냥꾼 · 시각 방향</h3>
+  <div class="kv"><span class="k">톤</span><span class="v">어두운 밤 · 손전등 원형 조명이 유일한 빛 · film noir 분위기</span></div>
+  <div class="kv"><span class="k">색 팔레트</span><span class="v">검은색 주도 (<code>#09070a</code>~<code>#160f12</code>) · 따뜻한 갈색 (<code>#4a3228</code>) · 세피아 종이 (<code>#c0ae80</code>)</span></div>
+  <div class="kv"><span class="k">mockup</span><span class="v"><code>20260726/game1/mockup.html</code> · 손전등 sweep 애니메이션 · 어둠 속 의자·종이·창문 실루엣</span></div>
+  <div class="kv"><span class="k">image_prompt</span><span class="v"><code>20260726/game1/image_prompt.md</code> · 5 프롬프트: 커버 · 인트로 · POV · 오브젝트 디테일 · 분위기 강조</span></div>
 
-  <div class="panel">
-    <h3>game2 · 환자의 방 <span class="badge warn">논리 이슈 1</span></h3>
-    <div class="kv"><div class="k">경로</div><div><code>dev/daily/20260723/game2/index.html</code></div></div>
-    <div class="kv"><div class="k">코어 루프</div><div>방문객 5명이 차례로 사랑/미움 두 말 중 선택 · 안 고른 말이 "방 공기"에 흐릿하게 쌓임</div></div>
-    <div class="kv"><div class="k">기초 구현</div><div>방문객 5명(딸·오래된 친구·옛 애인·마을 목사·손자) · 각 2택 · 선택 시 chosen flash + unchosen fading · 오른쪽 "방 공기" 패널 slide-in 누적</div></div>
-    <div class="kv"><div class="k">(a) 발전</div><div><strong>손자 특별 대사:</strong> 방 공기 3개 이상 시 손자 도착 전 "방 안에 뭔가 많이 남아있는 것 같아요" 자동 삽입</div></div>
-    <div class="kv"><div class="k">(c) 발전</div><div>방문객 아이콘+이름 헤더 · 진행 표시(N/5) · 최종 화면 "말해진 것 / 방에 남은 것" 2열 정리</div></div>
-    <div class="kv"><div class="k">다음 스텝</div><div>안 고른 말 수 기반 엔딩 분기(0개 "아무것도 남기지 않은 방" / 3개↑ "꽉 찬 방") · 방문객 대사가 이전 안 고른 말 반영 · 환자 이름·병명 랜덤</div></div>
-    <div class="kv"><div class="k">이월 정정</div><div>위 결재 요망 1번 · 손자 특별 대사 조건 무조건 참(shadowList.length ≥ 3이 앞 방문객 4명 미채택 후 항상 4). 임계값 비율 or 감정 태그 기반 재설계 필요. line 277 데드 브랜치 동반.</div></div>
-  </div>
+  <h3>game2 · 눈으로 듣기 · 시각 방향</h3>
+  <div class="kv"><span class="k">톤</span><span class="v">공허한 어둠 · 순수 음악적 시각화 · 미니멀 미적</span></div>
+  <div class="kv"><span class="k">색 팔레트</span><span class="v">순수 검정 (<code>#000</code>) · 음악 반응형 색상 변화 (파랑 → 시안 → 초록 → 노랑 → 빨강)</span></div>
+  <div class="kv"><span class="k">mockup</span><span class="v"><code>20260726/game2/mockup.html</code> · 3중 링 팽창 · 점선 타겟 존 · 중심 점광원</span></div>
+  <div class="kv"><span class="k">image_prompt</span><span class="v"><code>20260726/game2/image_prompt.md</code> · 5 프롬프트: 커버 · 인트로 · 게임플레이 · 파티클 · 몰입</span></div>
 
-  <div class="panel">
-    <h3>game3 · 밤 종지기 <span class="badge ok">클린 · 스멜 1</span></h3>
-    <div class="kv"><div class="k">경로</div><div><code>dev/daily/20260723/game3/index.html</code></div></div>
-    <div class="kv"><div class="k">코어 루프</div><div>5일 밤 · 관찰 힌트 → 종 패턴 4종 선택 → 동심원 파형이 퍼지고 7채 집 반응</div></div>
-    <div class="kv"><div class="k">기초 구현</div><div>5일 밤×4 패턴 반응 데이터 · 별 28개 CSS 랜덤 · 탑 실루엣 clip-path · 7채 집 `lit` 클래스 amber glow · 동심원 ripple CSS keyframes 3중 ring 400ms 순차 발사</div></div>
-    <div class="kv"><div class="k">(a) 발전</div><div><strong>오경계 역사 반영:</strong> 1·2일 오경계 발생 시 3일차 화재 대응 때 "마을이 망설였습니다. 또 오경계인가 싶었던 것입니다" 텍스트 분기</div></div>
-    <div class="kv"><div class="k">(c) 발전</div><div>정오/오경계 판정 레이블(✓/×) · 다음 밤 버튼 · 5일 마무리 후 마을 일지(날짜별 선택+결과) · 올바른 판단/오경계 수 요약</div></div>
-    <div class="kv"><div class="k">다음 스텝</div><div>집 위치 고정 지도로 파형 거리별 반응 속도 · 7일차+ 마을 누적 이벤트(오경계 3회→퇴마사) · 관찰 힌트 텍스트 외 시각(별 수·집 불빛·배경 색) 암호화</div></div>
-    <div class="kv"><div class="k">이월 정정</div><div>위 결재 요망 2번 · <code>n.day === 3</code> 매직 넘버(NIGHTS 재정렬 시 취약). msgOverride가 3일차 정답에만 적용·오답 미반영은 설계 결정 유지.</div></div>
-  </div>
+  <h3>game3 · 한 획 · 시각 방향</h3>
+  <div class="kv"><span class="k">톤</span><span class="v">어둠 속 미니멀 도트 · 한 획의 흐름과 연결</span></div>
+  <div class="kv"><span class="k">색 팔레트</span><span class="v">어두운 파랑 배경 (<code>#07080e</code>) · 보라 계열 도트 (Hue 255+) · 글로우</span></div>
+  <div class="kv"><span class="k">mockup</span><span class="v"><code>20260726/game3/mockup.html</code> · 6점 다이아몬드 배치 · breathing 애니메이션 · 샘플 경로 SVG</span></div>
+  <div class="kv"><span class="k">image_prompt</span><span class="v"><code>20260726/game3/image_prompt.md</code> · 5 프롬프트: 커버 · 인트로 · 게임플레이 · 잔상 누적 · 성공 파티클</span></div>
 
-  <div class="panel-sub">
-    <strong>어제 이월 이슈 종결:</strong> 07-22 game3 관측자의 방 치명 버그(README/코드 어긋남)·game2 꽃말배달부 mismatchCount 실버그 — 오늘 파일은 모두 별개 게임, 해당 없음. 20260722 폴더 사이클 종료.
-  </div>
-  <div class="panel-sub">
-    <strong>절차 이슈 5일 재범 (상태 변동 없음):</strong> 마이클 (a)(c)까지 자체 실행 · [[자율 지시:]] 마커 부재 5일째. 오늘 산출물 품질은 개선됐으나 절차 이슈는 그대로. 인프라 조정 우선순위 유지 · 위 결재 요망 3번.
-  </div>
-</section>
-
-<!-- ================= 섹션 D ================= -->
-<section>
-  <h2>D. 디자인팀 작업 (2026-07-23 04:00~04:02 · 피카소 mockup + 달리 Canva·검증)</h2>
-
-  <div class="panel">
-    <h3>피카소 (사원) · HTML mockup 3종 · 04:00~04:02</h3>
-    <ul>
-      <li><strong>game1 · 모래 만다라:</strong> 티베트 사원 새벽 톤 · 7색 팔레트 · 만다라 프리뷰 원형 · <code>dev/daily/20260723/game1/mockup.html</code></li>
-      <li><strong>game2 · 환자의 방:</strong> 시골 병원 오후 햇빛 톤 · 방문객 5명 아이콘 그리드 · "말해진 것과 남겨진 것" 대비 · <code>dev/daily/20260723/game2/mockup.html</code></li>
-      <li><strong>game3 · 밤 종지기:</strong> 밤 별 씬 · 종탑 중앙 · 7채 집 · 4패턴 설명 그리드 · <code>dev/daily/20260723/game3/mockup.html</code></li>
-    </ul>
-  </div>
-
-  <div class="panel">
-    <h3>달리 (대리) · 이행 검증 + Canva 포스터 3종 완료</h3>
-    <ul>
-      <li><strong>이행 검증:</strong> 피카소 mockup.html 3종 실물 확인 ✅ · 04:01~04:02 타임스탬프 · 내용 게임 일치 · <em>선기록 문제 재발 없음 2일차</em>(다빈치 어제 에스컬레이션 후 정상 유지)</li>
-      <li><strong>Canva 포스터 3/3 완료</strong> — 어제(game3 보류) 대비 완전 회복:
-        <ul>
-          <li>모래 만다라 · Canva ID <code>DAHQI-4jHxQ</code> · "향 연기 속 / 새벽 의례" · 12섹터×4링 · 씨앗 색 연쇄 · 파티클 산란</li>
-          <li>환자의 방 · Canva ID <code>DAHQI97Amq8</code> · "오후 햇빛 / 시골 병원" · 방문객 5명 · 방 공기 누적 · 말해진 것 vs 남은 것</li>
-          <li>밤 종지기 · Canva ID <code>DAHQIxZqdgY</code> · "5일 밤 / 종탑 위에서" · 패턴 4종 · 집 7채 · 오경계 역사 반영</li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-
-  <div class="panel-sub">
-    <strong>이미지 sandbox 이슈 (자연 해소 지속 2일차):</strong> 오늘도 Higgsfield 커버 이미지 생성 없음(HTML mockup 방향 유지). 리포트에 embed할 커버 파일 자체 부재라 sandbox 접촉면 없음. Higgsfield 커버 필요 시점 재현 예상 · 프로세스 변경 결정 여전히 대기.
-  </div>
+  <h4 style="margin-top:24px;">세션 프로세스 노트</h4>
+  <p><span class="warn">△ 공동 세션 규율 붕괴</span> — 팀장 다빈치 지시 마커 미발화 + 피카소·달리 scope 침범. 산출물은 통과했으나 다음 사이클부터 3항 규율 (지시서 배정 우선 · 팀장 첫 발화 대기 · 작업자 병기 금지) 적용 예정. 팀장 자체 조치 완료.</p>
 </section>
 
 <footer>
-  기획전략실 · 사마의 · 2026-07-23 09:00 KST · 파이프라인 7번째 사이클 종합 (사마의 5 → 마이클 3 픽·(a)(c) 발전 → 클레버 검수 3/3 통과·논리 1·스멜 1 → 피카소 mockup 3종 + 달리 Canva 3/3 완료 → 사마의 리포트) · 어제 대비 산출물·디자인 품질 회복
+  <div class="footer-hl">사마의 리포트 · 2026-07-26 (일) · 첫 새 파이프라인 사이클 완료</div>
+  <div>발굴 5 → 개발 3 → mockup 3 + 프롬프트 15 · 언어 노출 3개 다 0자 · A·A/C·D 3갈래 커버</div>
+  <div>다음 사이클: <span class="footer-hl">2026-07-28 (화) 00:02 · 사마의 발굴</span></div>
+  <div style="margin-top:12px;">
+    로컬 사본: <code>~/projects/게임제작/20260726/03_사마의_리포트.html</code><br>
+    배포: <code>https://6k2cn7d6ym-a11y.github.io/gamereport-/</code>
+  </div>
 </footer>
 
 </div>
